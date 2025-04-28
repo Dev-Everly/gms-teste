@@ -9,8 +9,7 @@
 // ***********************************************
 //
 //
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+
 //
 //
 // -- This is a child command --
@@ -23,3 +22,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// -- This is a parent command --
+  Cypress.Commands.add('preencherCadastro', (nome,sobrenome,email,telefone,senha) => {  
+    cy.get('#signup-firstname').type(nome)
+    cy.get('#signup-lastname').type(sobrenome)
+    cy.get('#signup-email').type(email)
+    cy.get('#signup-phone').type(telefone)
+    cy.get('#signup-password').type(senha)
+    cy.get('#signup-button').click()
+   })
