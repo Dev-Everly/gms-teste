@@ -38,3 +38,16 @@ describe('US-012-Funcionalidade: Click em cadastrar sem preencer campos obrigat�
     cy.get('#signup-response').should('contain','{"message":"Nome não pode estar vazio"}')
   })
 })
+
+describe('US-012-Funcionalidade: Click em cadastrar sem preencer campos obrigatórios ', () => {
+  it('Formato de email válido', () => {
+    cy.visit('http://127.0.0.1:8080/')
+    cy.get('#signup-firstname').type('Everly')
+    cy.get('#signup-lastname').type('R')
+    cy.get('#signup-email').type('1w3@teste.com')
+    cy.get('#signup-phone').type('1195874478')
+    cy.get('#signup-password').type('123')
+    cy.get('#signup-button').click()
+    cy.get('#signup-response').should('contain','{"message":"Senha deve ter pelo menos 8 caracteres, incluir uma letra maiúscula, um número e um caractere especial (!@#$&*)"}')
+  })
+})
